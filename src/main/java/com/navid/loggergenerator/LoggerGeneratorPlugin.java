@@ -10,14 +10,16 @@ public class LoggerGeneratorPlugin implements Plugin<Project> {
     public void apply(Project project) {
         Configuration configuration = project.getConfigurations().create("loggergenerator");
 
-        project.getTasks().create("hello", LoggerGeneratorTask.class, (task) -> {
-            task.setMessage("Hello");
-            task.setRecipient("World");
+        LoggerGeneratorExtension extension = project.getExtensions().create("loggerGenerator", LoggerGeneratorExtension.class);
+
+        project.getTasks().create("generateLogs", LoggerGeneratorTask.class, (task) -> {
+            //LoggerGeneratorExtension extension2 = task.getExtensions().create("loggerGenerator", LoggerGeneratorExtension.class);
+            task.setInputFile(extension.getInputFile());
+            task.setOutputFolder(extension.getOutputFolder());
+            task.setPackageName(extension.getPackageName());
         });
 
         configureDefaultDependencies(project, configuration);
-
-
     }
 
     private void configureDefaultDependencies(Project project, Configuration configuration) {
@@ -30,8 +32,11 @@ public class LoggerGeneratorPlugin implements Plugin<Project> {
 
         project.getTasks().withType(LoggerGeneratorTask.class, new Action<LoggerGeneratorTask>() {
             public void execute(LoggerGeneratorTask dataProcessing) {
-                dataProcessing.setDataFiles(configuration);
+                dataProcessing.setExecutableJars(configuration);
+
             }
         });
+
+
     }
 }

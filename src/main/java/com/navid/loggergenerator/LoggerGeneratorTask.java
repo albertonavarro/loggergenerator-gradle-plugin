@@ -9,34 +9,55 @@ import org.gradle.api.tasks.JavaExec;
 import org.gradle.api.tasks.TaskAction;
 
 public class LoggerGeneratorTask extends DefaultTask {
-    private String message;
-    private String recipient;
-    private final ConfigurableFileCollection dataFiles;
+    private String inputFile;
+    private String outputFolder;
+    private String packageName;
+    private final ConfigurableFileCollection executableJars;
 
     public LoggerGeneratorTask() {
-        dataFiles = getProject().files();
+        executableJars = getProject().files();
+        LoggerGeneratorExtension extension = getProject().getExtensions().findByType(LoggerGeneratorExtension.class);
     }
 
+    public String getInputFile() {
+        return inputFile;
+    }
 
-    public String getMessage() { return message; }
-    public void setMessage(String message) { this.message = message; }
+    public LoggerGeneratorTask setInputFile(String inputFile) {
+        this.inputFile = inputFile;
+        return this;
+    }
 
-    public String getRecipient() { return recipient; }
-    public void setRecipient(String recipient) { this.recipient = recipient; }
+    public String getOutputFolder() {
+        return outputFolder;
+    }
 
-    public void setDataFiles(FileCollection dataFiles) {
-        this.dataFiles.setFrom(dataFiles);
+    public LoggerGeneratorTask setOutputFolder(String outputFolder) {
+        this.outputFolder = outputFolder;
+        return this;
+    }
+
+    public String getPackageName() {
+        return packageName;
+    }
+
+    public LoggerGeneratorTask setPackageName(String packageName) {
+        this.packageName = packageName;
+        return this;
+    }
+
+    public void setExecutableJars(FileCollection executableJars) {
+        this.executableJars.setFrom(executableJars);
     }
 
     @InputFiles
-    public FileCollection getDataFiles() {
-        return dataFiles;
+    public FileCollection getExecutableJars() {
+        return executableJars;
     }
 
     @TaskAction
-    void sayGreeting() {
-        System.out.printf("%s, %s!\n", getMessage(), getRecipient());
-        System.out.println(getDataFiles().getFiles());
+    void generateLogs() {
+        System.out.println(getExecutableJars().getFiles());
 
         this.getProject().getTasks().withType(JavaExec.class);
         LoggerGeneratorInvoker.invoke(this);
