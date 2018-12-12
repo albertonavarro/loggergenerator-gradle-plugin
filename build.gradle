@@ -1,3 +1,12 @@
+buildscript{
+    repositories {
+        mavenLocal()
+
+    }
+    dependencies{
+        classpath 'com.navid.loggergenerator:loggergeneratorplugin:0.5'
+    }
+}
 
 plugins {
     id "com.gradle.plugin-publish" version "0.10.0"
@@ -13,7 +22,7 @@ repositories {
     }
 }
 
-version = "0.2"
+version = "0.5"
 group = "com.navid.loggergenerator"
 
 gradlePlugin {
@@ -38,3 +47,14 @@ pluginBundle {
         }
     }
 }
+
+
+
+apply plugin: com.navid.loggergenerator.LoggerGeneratorPlugin
+
+generateLogs{
+    inputFile = "fileeee"
+    outputFolder = "."
+    packageName = "chocho"
+}
+

@@ -7,17 +7,15 @@ import org.gradle.api.artifacts.Configuration;
 import org.gradle.api.artifacts.DependencySet;
 
 public class LoggerGeneratorPlugin implements Plugin<Project> {
+
+
     public void apply(Project project) {
         Configuration configuration = project.getConfigurations().create("loggergenerator");
 
-        LoggerGeneratorExtension extension = project.getExtensions().create("loggerGenerator", LoggerGeneratorExtension.class);
-
         project.getTasks().create("generateLogs", LoggerGeneratorTask.class, (task) -> {
-            //LoggerGeneratorExtension extension2 = task.getExtensions().create("loggerGenerator", LoggerGeneratorExtension.class);
-            task.setInputFile(extension.getInputFile());
-            task.setOutputFolder(extension.getOutputFolder());
-            task.setPackageName(extension.getPackageName());
+
         });
+
 
         configureDefaultDependencies(project, configuration);
     }

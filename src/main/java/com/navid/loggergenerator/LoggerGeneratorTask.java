@@ -9,14 +9,17 @@ import org.gradle.api.tasks.JavaExec;
 import org.gradle.api.tasks.TaskAction;
 
 public class LoggerGeneratorTask extends DefaultTask {
+    private String generatorVersion;
+
     private String inputFile;
+
     private String outputFolder;
+
     private String packageName;
     private final ConfigurableFileCollection executableJars;
 
     public LoggerGeneratorTask() {
         executableJars = getProject().files();
-        LoggerGeneratorExtension extension = getProject().getExtensions().findByType(LoggerGeneratorExtension.class);
     }
 
     public String getInputFile() {
@@ -43,6 +46,15 @@ public class LoggerGeneratorTask extends DefaultTask {
 
     public LoggerGeneratorTask setPackageName(String packageName) {
         this.packageName = packageName;
+        return this;
+    }
+
+    public String getGeneratorVersion() {
+        return generatorVersion;
+    }
+
+    public LoggerGeneratorTask setGeneratorVersion(String generatorVersion) {
+        this.generatorVersion = generatorVersion;
         return this;
     }
 
