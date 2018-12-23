@@ -46,6 +46,17 @@ loggerGeneratorTask{
 }
 ```
 
+### Overriding tool version
+
+Given that loggergenerator and loggergenerator-gradle-plugin are developed and deployed separately, 
+at some point, you might want to override default version. In that case, you need an Extension as follows:
+
+```groovy
+LoggerGeneratorConfig {
+    executableVersion = "1.0.2"
+}
+```
+
 ### Example of valid log descriptor 
 
 *(please refer to https://github.com/albertonavarro/loggergenerator for up to date and version compliant format)*
