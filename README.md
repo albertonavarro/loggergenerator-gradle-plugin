@@ -87,11 +87,25 @@ sayings:
 
 On `outputFolder` files are generated with the `packageName` structure.
 
+### Using generated tool as part of your project
+
 You will need *(for now)* some extra lines in your build.gradle so you can use the generated code:
 
 ```groovy
-compileJava.dependsOn loggerGeneratorTask
-sourceSets.main.java.srcDir "${buildDir}/codegen"
+sourceSets {
+    main {
+        java {
+            srcDir file("${buildDir}/codegen")
+        }
+    }
+}
+```
+
+and some dependencies
+
+```groovy
+compile("ch.qos.logback:logback-classic:1.2.3")
+compile group: 'net.logstash.logback', name: 'logstash-logback-encoder', version: '5.1'
 ```
 
 Now `./gradlew build` will trigger the codegen and it will be usable by your code.
