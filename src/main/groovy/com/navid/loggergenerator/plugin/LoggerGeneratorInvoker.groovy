@@ -1,9 +1,6 @@
-package com.navid.loggergenerator;
+package com.navid.loggergenerator.plugin
 
-import java.util.HashMap;
-import java.util.Map;
-
-public class LoggerGeneratorInvoker {
+class LoggerGeneratorInvoker {
 
     static void invoke(LoggerGeneratorTask loggerGenTask) {
         Map executionParameters = new HashMap<>();
