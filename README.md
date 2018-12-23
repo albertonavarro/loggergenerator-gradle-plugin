@@ -70,9 +70,6 @@ mappings:
   - name: status
     type: java.lang.Number
     description: blablablah
-  - name: meloinvento
-    type: com.mycompany.MadeUp
-    description: blablablah
 sayings:
   - code: COD_1
     message: "something went wrong with this other thing"
@@ -87,6 +84,44 @@ sayings:
 
 On `outputFolder` files are generated with the `packageName` structure.
 
+For above example, we can expect a generated source like:
+```java
+package com.navid.codegen;
+
+import static net.logstash.logback.argument.StructuredArguments.*;
+
+import java.lang.Iterable;
+import java.lang.Number;
+import java.lang.String;
+import net.logstash.logback.argument.StructuredArgument;
+
+public final class LoggerUtils {
+  public static StructuredArgument kvObjectId(String objectId) {
+    return keyValue("objectId",objectId);
+  }
+
+  public static StructuredArgument aObjectId(Iterable<String> objectId) {
+    return array("objectId",objectId);
+  }
+
+  public static StructuredArgument aObjectId(String... objectId) {
+    return array("objectId",objectId);
+  }
+
+  public static StructuredArgument kvStatus(Number status) {
+    return keyValue("status",status);
+  }
+
+  public static StructuredArgument aStatus(Iterable<Number> status) {
+    return array("status",status);
+  }
+
+  public static StructuredArgument aStatus(Number... status) {
+    return array("status",status);
+  }
+}
+```
+
 ### Using generated tool as part of your project
 
 You will need *(for now)* some extra lines in your build.gradle so you can use the generated code:
@@ -99,6 +134,8 @@ sourceSets {
         }
     }
 }
+
+compileJava.dependsOn loggerGeneratorTask
 ```
 
 and some dependencies
