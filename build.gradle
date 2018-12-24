@@ -31,15 +31,15 @@ dependencies {
 // Project configuration
 // * * * * * * * * * * * *
 
-project.description     = 'Demo plugin to use as a starting point for custom plugin development'
+project.description     = 'Logger Generator Plugin for Logger Generator tooling as described in https://looking4q.blogspot.com/2018/11/logging-cutting-edge-practices.html'
 project.group           = 'com.navid.loggergenerator'
 project.version         = '1.1.0'
 
 
 project.ext.name        = 'LoggerGeneratorPlugin'
 project.ext.pluginId    = 'LoggerGeneratorPlugin'
-project.ext.scm         = 'scm:git@github.com:Praqma/gradle-plugin-bootstrap.git'
-project.ext.url         = 'https://github.com/Praqma/gradle-plugin-bootstrap'
+project.ext.scm         = 'scm:git@github.com/albertonavarro/loggergenerator-gradle-plugin.git'
+project.ext.url         = 'https://github.com/albertonavarro/loggergenerator-gradle-plugin'
 
 // Configuration for: java-gradle-plugin
 gradlePlugin {
@@ -65,11 +65,11 @@ gradlePlugin {
 pluginBundle {
     website = project.url
     vcsUrl = project.scm
-    tags = ['demo', 'example', 'quickstart']
+    tags = ['loggergenerator', 'looking4q', 'navid']
 
     plugins {
         LoggerGeneratorPlugin {
-            displayName = 'Demo Custom Gradle Plugin '
+            displayName = 'Logger Generator Plugin'
             description = project.description
             id          = project.pluginId
         }
