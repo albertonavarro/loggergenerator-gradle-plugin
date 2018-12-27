@@ -7,7 +7,7 @@ plugins {
     id 'java-gradle-plugin'
 
     // Publishing publicly
-    id 'com.gradle.plugin-publish' version '0.9.10'
+    id 'com.gradle.plugin-publish' version '0.10.0'
 
     // Publishing to Artifactory
     id 'maven-publish'
@@ -37,7 +37,7 @@ project.version         = '1.1.0'
 
 
 project.ext.name        = 'LoggerGeneratorPlugin'
-project.ext.pluginId    = 'LoggerGeneratorPlugin'
+project.ext.pluginId    = 'com.navid.LoggerGeneratorPlugin'
 project.ext.scm         = 'scm:git@github.com/albertonavarro/loggergenerator-gradle-plugin.git'
 project.ext.url         = 'https://github.com/albertonavarro/loggergenerator-gradle-plugin'
 
