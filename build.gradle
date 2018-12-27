@@ -70,8 +70,8 @@ pluginBundle {
     plugins {
         LoggerGeneratorPlugin {
             displayName = 'Logger Generator Plugin'
-            description = project.description
             id          = project.pluginId
+            description = project.description
         }
     }
 }
