@@ -14,14 +14,20 @@ import org.gradle.api.tasks.TaskAction
  */
 class LoggerGeneratorTask extends DefaultTask {
 
+
     @Internal
-    String generatorVersion = "zzz";
+    String inputFile
     @Internal
-    String inputFile;
+    String classOutput = "."
     @Internal
-    String outputFolder;
+    String packageName = "com.example"
     @Internal
-    String packageName;
+    String className = "LoggerUtils"
+    @Internal
+    String htmlName = "LoggerUtilsDoc"
+    @Internal
+    String htmlOutput = "."
+
     @Internal
     ConfigurableFileCollection executableJars;
 
@@ -30,7 +36,7 @@ class LoggerGeneratorTask extends DefaultTask {
     }
 
     @TaskAction
-    void greet() {
+    void defaultAction() {
         System.out.println(getExecutableJars().getFiles());
 
         //this.getProject().getTasks().withType(JavaExec.class);

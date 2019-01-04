@@ -9,7 +9,7 @@ import org.gradle.api.Project
  * Reference:
  * https://docs.gradle.org/4.6/userguide/custom_plugins.html#sec:writing_a_simple_plugin
  */
-public class LoggerGeneratorPlugin implements Plugin<Project>{
+class LoggerGeneratorPlugin implements Plugin<Project>{
 
     /**
      * Applies this plugin to the given Gradle project

@@ -25,7 +25,7 @@ class LoggerGeneratorModuleTest {
         // Prepare build.gradle
         System.println(testProjectDir.getRoot())
         build_gradle = testProjectDir.newFile('build.gradle')
-        build_gradle << 'plugins { id "LoggerGeneratorPlugin" }\n'
+        build_gradle << 'plugins { id "com.navid.LoggerGeneratorPlugin" }\n'
     }
 
     /**
@@ -49,17 +49,11 @@ class LoggerGeneratorModuleTest {
     }
 
     @Test
-    void loggerGenerator_empty() {
-        def result = gradle('loggerGeneratorTask')
-        assert result.task(":loggerGeneratorTask").outcome == SUCCESS
-    }
-
-    @Test
     void loggerGeneratorTask_extendedConfigBlock() {
         build_gradle << """
             task goodTask(type: LoggerGeneratorTask) {
                 packageName = "com.navid.test.loggerGeneratorTask_extendedConfigBlock"
-                outputFolder = "${testProjectDir.newFolder('codegen').path}"
+                classOutput = "${testProjectDir.newFolder('codegen').path}"
                 inputFile = "$validFile"
             }
             """
@@ -69,11 +63,15 @@ class LoggerGeneratorModuleTest {
         assert result.task(":goodTask").outcome == SUCCESS
     }
 
-    @Test
+    @Test(expected = Exception.class)
     void loggerGeneratorTask_LoggerGeneratorConfigBlock() {
         build_gradle << """
             LoggerGeneratorConfig {
-                executableVersion = "1.0.1"
+                executableVersion = "inexisting"
+            }
+            
+            loggerGeneratorTask {
+                inputFile = "$validFile"
             }
             """
 
@@ -87,7 +85,8 @@ class LoggerGeneratorModuleTest {
         build_gradle << """
             loggerGeneratorTask {
                 packageName = "Ahoy"
-                outputFolder = "William"
+                classOutput = "William"
+                inputFile = "$validFile"
             }
             """
 

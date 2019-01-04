@@ -4,12 +4,22 @@ class LoggerGeneratorInvoker {
 
     static void invoke(LoggerGeneratorTask loggerGenTask) {
         Map executionParameters = new HashMap<>();
+        executionParameters.put("failOnError", true)
         executionParameters.put("jar", loggerGenTask.getExecutableJars().getSingleFile());
         executionParameters.put("fork", true);
         executionParameters.put("args",
                 "--input " + loggerGenTask.getInputFile() +
                         " --package " + loggerGenTask.getPackageName() +
-                        " --output " + loggerGenTask.getOutputFolder());
-        Object result = loggerGenTask.getAnt().invokeMethod("java", executionParameters);
+                        " --codegen-output " + loggerGenTask.getClassOutput() +
+                        " --class-name " + loggerGenTask.getClassName() +
+                        " --html-name " + loggerGenTask.getHtmlName() +
+                        " --html-output " + loggerGenTask.getHtmlOutput())
+
+        try {
+            Object result = loggerGenTask.getAnt().invokeMethod("java", executionParameters)
+        } catch( Exception e) {
+            System.out.println("Command failed: " + executionParameters.toString())
+            throw e
+        }
     }
 }
