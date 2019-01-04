@@ -31,47 +31,30 @@ dependencies {
 // Project configuration
 // * * * * * * * * * * * *
 
-project.description     = 'Logger Generator Plugin for Logger Generator tooling as described in https://looking4q.blogspot.com/2018/11/logging-cutting-edge-practices.html'
 project.group           = 'com.navid.loggergenerator'
 project.version         = '1.2.0'
 
 
-project.ext.name        = 'LoggerGeneratorPlugin'
-project.ext.pluginId    = 'com.navid.LoggerGeneratorPlugin'
-project.ext.scm         = 'scm:git@github.com/albertonavarro/loggergenerator-gradle-plugin.git'
-project.ext.url         = 'https://github.com/albertonavarro/loggergenerator-gradle-plugin'
-
 // Configuration for: java-gradle-plugin
 gradlePlugin {
     plugins {
-        LoggerGeneratorPlugin {
-            id = project.pluginId
+        loggerGeneratorPlugin {
+            id = 'com.navid.LoggerGeneratorPlugin'
             implementationClass = 'com.navid.loggergenerator.plugin.LoggerGeneratorPlugin'
         }
     }
 }
 
-// * * * * * * * * * * * *
-// Publishing
-// * * * * * * * * * * * *
-
-// Consult the accompanied blog post for information on publishing the plugin.
-// A link can be found in the README file.
-
-// Publishing to plugins.gradle.org
-// --------------------------------
-
 // Configuration for: com.gradle.plugin-publish
 pluginBundle {
-    website = project.url
-    vcsUrl = project.scm
+    website = 'https://github.com/albertonavarro/loggergenerator-gradle-plugin'
+    vcsUrl = 'scm:git@github.com/albertonavarro/loggergenerator-gradle-plugin.git'
     tags = ['loggergenerator', 'looking4q', 'navid']
-
+    description = 'Logger Generator Plugin for Logger Generator tooling as described in https://looking4q.blogspot.com/2018/11/logging-cutting-edge-practices.html'
+    
     plugins {
-        LoggerGeneratorPlugin {
+        loggerGeneratorPlugin {
             displayName = 'Logger Generator Plugin'
-            id          = project.pluginId
-            description = project.description
         }
     }
 }
@@ -89,13 +72,4 @@ publishing {
             version     project.version
         }
     }
-    repositories {
-      /*  maven {
-            url project.rtfUrl
-            credentials {
-                username project.rtfUser
-                password project.rtfSecret
-            }
-        }
-   */ }
 }
