@@ -11,6 +11,7 @@ plugins {
 
     // Publishing to Artifactory
     id 'maven-publish'
+    id 'com.jfrog.bintray' version "1.8.4"
 }
 
 // * * * * * * * * * * * *
@@ -27,14 +28,6 @@ dependencies {
     testCompile 'junit:junit:4+'
 }
 
-// * * * * * * * * * * * *
-// Project configuration
-// * * * * * * * * * * * *
-
-project.group           = 'com.navid.loggergenerator'
-project.version         = '1.2.0'
-
-
 // Configuration for: java-gradle-plugin
 gradlePlugin {
     plugins {
@@ -50,8 +43,8 @@ pluginBundle {
     website = 'https://github.com/albertonavarro/loggergenerator-gradle-plugin'
     vcsUrl = 'scm:git@github.com/albertonavarro/loggergenerator-gradle-plugin.git'
     tags = ['loggergenerator', 'looking4q', 'navid']
-    description = 'Logger Generator Plugin for Logger Generator tooling as described in https://looking4q.blogspot.com/2018/11/logging-cutting-edge-practices.html'
-    
+    description = project.description
+
     plugins {
         loggerGeneratorPlugin {
             displayName = 'Logger Generator Plugin'
@@ -59,10 +52,25 @@ pluginBundle {
     }
 }
 
-// Publishing to Artifactory
-// -------------------------
+bintray {
+    user = repositoryUser
+    key = repositoryPass
+    publications = ['pluginPublication']
 
-// Configures the publication to push, and the repository to push to
+    publish = true
+
+    pkg {
+        repo = 'maven'
+        name = "loggergenerator-gradle-plugin"
+        desc = project.description
+        licenses = ['Apache-2.0']
+        vcsUrl = 'https://github.com/albertonavarro/loggergenerator-gradle-plugin'
+        labels = ['loggergenerator', 'looking4q', 'navid']
+    }
+}
+
+publish.dependsOn bintrayUpload
+
 publishing {
     publications {
         pluginPublication (MavenPublication) {
