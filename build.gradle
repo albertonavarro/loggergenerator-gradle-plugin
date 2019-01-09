@@ -12,6 +12,7 @@ plugins {
     // Publishing to Artifactory
     id 'maven-publish'
     id 'com.jfrog.bintray' version "1.8.4"
+    id "com.palantir.idea-test-fix" version "0.1.0"
 }
 
 // * * * * * * * * * * * *

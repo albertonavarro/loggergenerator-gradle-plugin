@@ -17,3 +17,4 @@ sentences:
       - status
     extradata:
       key: value
+    defaultLevel: error

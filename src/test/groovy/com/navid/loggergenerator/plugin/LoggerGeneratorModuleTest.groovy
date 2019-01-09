@@ -14,11 +14,11 @@ import static org.gradle.testkit.runner.TaskOutcome.*
  */
 class LoggerGeneratorModuleTest {
     @Rule
-    public final TemporaryFolder testProjectDir = new TemporaryFolder();
+    public final TemporaryFolder testProjectDir = new TemporaryFolder()
 
     private File build_gradle
 
-    private String validFile = LoggerGeneratorModuleTest.class.getResource("/validLogDescriptor.yml").getFile();
+    private String validFile = LoggerGeneratorModuleTest.class.getResource("/validLogDescriptor.yml").getFile()
 
     @Before
     void setup() {

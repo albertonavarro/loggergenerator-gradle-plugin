@@ -37,13 +37,13 @@ class LoggerGeneratorModule {
 
         project.configurations.create("loggerGeneratorConfiguration").defaultDependencies(new Action<DependencySet>() {
             void execute(DependencySet dependencies) {
-                dependencies.add(project.getDependencies().create("com.navid.loggergenerator:loggergenerator:" + extension.getExecutableVersion()));
+                dependencies.add(project.getDependencies().create("com.navid.loggergenerator:loggergenerator:" + extension.getExecutableVersion()))
             }
         })
 
         project.getTasks().withType(LoggerGeneratorTask.class, new Action<LoggerGeneratorTask>() {
             void execute(LoggerGeneratorTask loggerGeneratorTask) {
-                loggerGeneratorTask.setExecutableJars(project.configurations.getByName("loggerGeneratorConfiguration"));
+                loggerGeneratorTask.setExecutableJars(project.configurations.getByName("loggerGeneratorConfiguration"))
             }
         })
     }
