@@ -24,11 +24,10 @@ git clone https://github.com/albertonavarro/loggergenerator-gradle-plugin
 ```groovy
 buildscript{
     repositories {
-        mavenLocal()
-
+        maven { url "https://dl.bintray.com/albertonavarro/maven" }
     }
     dependencies{
-        classpath 'com.navid.loggergenerator:loggergenerator-plugin:1.1.0'
+        classpath 'com.navid.loggergenerator:loggergenerator-gradle-plugin:1.3.2'
     }
 }
 

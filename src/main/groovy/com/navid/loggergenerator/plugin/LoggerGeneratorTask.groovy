@@ -18,7 +18,7 @@ class LoggerGeneratorTask extends DefaultTask {
     @Internal
     String inputFile
     @Internal
-    String classOutput = "."
+    String codegenOutput = "."
     @Internal
     String packageName = "com.example"
     @Internal
@@ -27,6 +27,8 @@ class LoggerGeneratorTask extends DefaultTask {
     String htmlName = "LoggerUtilsDoc"
     @Internal
     String htmlOutput = "."
+    @Internal
+    String compat = "1.8"
 
     @Internal
     ConfigurableFileCollection executableJars;

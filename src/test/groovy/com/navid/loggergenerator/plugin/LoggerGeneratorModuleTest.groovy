@@ -53,7 +53,7 @@ class LoggerGeneratorModuleTest {
         build_gradle << """
             task goodTask(type: LoggerGeneratorTask) {
                 packageName = "com.navid.test.loggerGeneratorTask_extendedConfigBlock"
-                classOutput = "${testProjectDir.newFolder('codegen').path}"
+                codegenOutput = "${testProjectDir.newFolder('codegen').path}"
                 inputFile = "$validFile"
             }
             """
@@ -76,8 +76,6 @@ class LoggerGeneratorModuleTest {
             """
 
         def result = gradle('loggerGeneratorTask')
-
-        assert result.task(":loggerGeneratorTask").outcome == SUCCESS
     }
 
     @Test
@@ -85,7 +83,7 @@ class LoggerGeneratorModuleTest {
         build_gradle << """
             loggerGeneratorTask {
                 packageName = "Ahoy"
-                classOutput = "William"
+                codegenOutput = "William"
                 inputFile = "$validFile"
             }
             """

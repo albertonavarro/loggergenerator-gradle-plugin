@@ -10,10 +10,11 @@ class LoggerGeneratorInvoker {
         executionParameters.put("args",
                 "--input " + loggerGenTask.getInputFile() +
                         " --package " + loggerGenTask.getPackageName() +
-                        " --codegen-output " + loggerGenTask.getClassOutput() +
+                        " --codegen-output " + loggerGenTask.getCodegenOutput() +
                         " --class-name " + loggerGenTask.getClassName() +
                         " --html-name " + loggerGenTask.getHtmlName() +
-                        " --html-output " + loggerGenTask.getHtmlOutput())
+                        " --html-output " + loggerGenTask.getHtmlOutput() +
+                        " --compat-" + loggerGenTask.getCompat())
 
         try {
             Object result = loggerGenTask.getAnt().invokeMethod("java", executionParameters)
