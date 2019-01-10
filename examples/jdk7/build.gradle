@@ -3,7 +3,7 @@ buildscript{
         maven { url "https://dl.bintray.com/albertonavarro/maven" }
     }
     dependencies{
-        classpath 'com.navid.loggergenerator:loggergenerator-gradle-plugin:1.4.1'
+        classpath 'com.navid.loggergenerator:loggergenerator-gradle-plugin:1.4.3'
     }
 }
 
