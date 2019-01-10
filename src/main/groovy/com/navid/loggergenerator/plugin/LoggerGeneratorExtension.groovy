@@ -2,7 +2,7 @@ package com.navid.loggergenerator.plugin;
 
 class LoggerGeneratorExtension {
 
-    static final DEFAULT_VERSION = "1.1.3"
+    static final DEFAULT_VERSION = "1.1.4"
 
     String executableVersion = DEFAULT_VERSION
 

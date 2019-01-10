@@ -1,10 +1,12 @@
 package com.navid.loggergenerator.example.jdk7;
 
-import com.navid.codegen.LoggerUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import static com.navid.codegen.LoggerUtils.kvAmount;
+import java.lang.reflect.Array;
+import java.util.Arrays;
+
+import static com.navid.loggergenerator.example.jdk7.LoggerUtils.*;
 
 /**
  * Code taken from https://github.com/TheAlgorithms/Java/blob/master/Dynamic%20Programming/CoinChange.java
@@ -15,9 +17,7 @@ import static com.navid.codegen.LoggerUtils.kvAmount;
 public class CoinChange {
 
     //TODO
-    //support for int
     //support for varargs in audits
-    //jdk7 flag in plugin
 
     private static final Logger logger = LoggerFactory.getLogger(CoinChange.class);
 
@@ -27,13 +27,16 @@ public class CoinChange {
         int amount = 12;
         int[] coins = {2, 4, 5};
 
-        logger.info("Input {} {}", kvAmount(12), LoggerUtils.aCoins(coins));
+
+        //non audit lines also accepted
+        logger.info("Input array{} {}", kvAmount(12), LoggerUtils.aCoins(coins));
+        logger.info("Input list{} {}", kvAmount(12), LoggerUtils.aCoins(Arrays.asList(9,9,9)));
 
         //System.out.println("Number of combinations of getting change for " + amount + " is: " + change(coins, amount));
-        LoggerUtils.auditResultCombinations(logger, amount, change(coins, amount));
+        auditResultCombinations(logger, amount, change(coins, amount));
 
         //System.out.println("Minimum number of coins required for amount :" + amount + " is: " + minimumCoins(coins, amount));
-        LoggerUtils.auditResultMinimum(logger, amount, minimumCoins(coins, amount));
+        auditResultMinimum(logger, amount, minimumCoins(coins, amount));
     }
 
     /**

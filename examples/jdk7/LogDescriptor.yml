@@ -7,7 +7,7 @@ mappings:
     type: java.lang.Integer
     description: Total number of combinations of change.
   - name: coins
-    type: java.lang.Integer
+    type: int
     description: Number of coins in a combination.
 sentences:
   - code: ResultCombinations

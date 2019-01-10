@@ -3,7 +3,7 @@ buildscript{
         maven { url "https://dl.bintray.com/albertonavarro/maven" }
     }
     dependencies{
-        classpath 'com.navid.loggergenerator:loggergenerator-gradle-plugin:1.3.2'
+        classpath 'com.navid.loggergenerator:loggergenerator-gradle-plugin:1.4.1'
     }
 }
 
@@ -32,9 +32,9 @@ dependencies {
 loggerGeneratorTask{
     inputFile = "LogDescriptor.yml"
     packageName = "com.navid.codegen"
-    classOutput = "$buildDir/codegen"
+    codegenOutput = "$buildDir/codegen"
     htmlOutput = "$buildDir/html"
-    
+    compat = "1.7"
 }
 
 sourceSets {
