@@ -1,0 +1,26 @@
+version: 1
+mappings:
+  - name: amount
+    type: java.lang.Integer
+    description: Amount of money to match, in minimum representation (no decimals).
+  - name: combinations
+    type: java.lang.Integer
+    description: Total number of combinations of change.
+  - name: coins
+    type: int
+    description: Number of coins in a combination.
+sentences:
+  - code: ResultCombinations
+    message: "Number of combinations of getting change"
+    variables:
+      - amount
+      - combinations
+    extradata: {}
+    defaultLevel: info
+  - code: ResultMinimum
+    message: "Minimum number of coins required"
+    variables:
+      - amount
+      - coins
+    extradata: {}
+    defaultLevel: info

@@ -2,7 +2,6 @@ package com.navid.loggergenerator.example.jdk7;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.slf4j.event.Level;
 
 import static com.navid.codegen.LoggerUtils.*;
 import static java.util.Arrays.asList;
@@ -25,13 +24,13 @@ public class CoinChange {
 
         int amount = 12;
         int[] coins = {2, 4, 5};
-
+        
         //non audit lines also accepted
         logger.info("Input (using array) {} {}", kvAmount(12), aCoins(coins));
         logger.info("Input (using iterable) {} {}", kvAmount(12), aCoins(asList(9,9,9)));
 
         //System.out.println("Number of combinations of getting change for " + amount + " is: " + change(coins, amount));
-        auditResultCombinations(logger, Level.WARN, amount, change(coins, amount));
+        auditResultCombinations(logger::warn, amount, change(coins, amount));
 
         //System.out.println("Minimum number of coins required for amount :" + amount + " is: " + minimumCoins(coins, amount));
         auditResultMinimum(logger, amount, minimumCoins(coins, amount));
