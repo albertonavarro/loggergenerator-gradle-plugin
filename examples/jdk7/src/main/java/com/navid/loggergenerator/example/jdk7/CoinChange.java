@@ -6,6 +6,7 @@ import org.slf4j.LoggerFactory;
 import java.lang.reflect.Array;
 import java.util.Arrays;
 
+import static com.navid.codegen.LoggerUtils.*;
 import static com.navid.loggergenerator.example.jdk7.LoggerUtils.*;
 
 /**
@@ -29,8 +30,8 @@ public class CoinChange {
 
 
         //non audit lines also accepted
-        logger.info("Input array{} {}", kvAmount(12), LoggerUtils.aCoins(coins));
-        logger.info("Input list{} {}", kvAmount(12), LoggerUtils.aCoins(Arrays.asList(9,9,9)));
+        logger.info("Input (using array) {} {}", kvAmount(12), aCoins(coins));
+        logger.info("Input (using iterable) {} {}", kvAmount(12), aCoins(Arrays.asList(9,9,9)));
 
         //System.out.println("Number of combinations of getting change for " + amount + " is: " + change(coins, amount));
         auditResultCombinations(logger, amount, change(coins, amount));
