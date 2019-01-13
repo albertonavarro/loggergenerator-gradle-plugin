@@ -1,4 +1,4 @@
-package com.navid.loggergenerator.example.jdk7;
+package com.navid.loggergenerator.example.jdk8;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
