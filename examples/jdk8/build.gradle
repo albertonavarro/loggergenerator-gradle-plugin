@@ -3,7 +3,7 @@ buildscript{
         maven { url "https://dl.bintray.com/albertonavarro/maven" }
     }
     dependencies{
-        classpath 'com.navid.loggergenerator:loggergenerator-gradle-plugin:1.4.5'
+        classpath 'com.navid.loggergenerator:loggergenerator-gradle-plugin:1.4.6'
     }
 }
 
@@ -29,7 +29,7 @@ dependencies {
     compile group: 'net.logstash.logback', name: 'logstash-logback-encoder', version: '5.1'
 }
 
-loggerGeneratorTask{
+task myCodegenTask(type: LoggerGeneratorTask) {
     inputFile = "LogDescriptor.yml"
     packageName = "com.navid.codegen"
     codegenOutput = "$buildDir/codegen"
@@ -45,4 +45,4 @@ sourceSets {
     }
 }
 
-compileJava.dependsOn loggerGeneratorTask
+compileJava.dependsOn myCodegenTask

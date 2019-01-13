@@ -18,13 +18,13 @@ class LoggerGeneratorTask extends DefaultTask {
     @Internal
     String inputFile
     @Internal
-    String codegenOutput = "."
+    String packageName = "com.example.codegen"
     @Internal
-    String packageName = "com.example"
+    String codegenOutput = "."
     @Internal
     String className = "LoggerUtils"
     @Internal
-    String htmlName = "LoggerUtilsDoc"
+    String htmlName = "LoggerUtilsDoc.html"
     @Internal
     String htmlOutput = "."
     @Internal

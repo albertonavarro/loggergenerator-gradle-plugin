@@ -9,7 +9,7 @@ class LoggerGeneratorInvoker {
         executionParameters.put("jar", loggerGenTask.getExecutableJars().getSingleFile());
         executionParameters.put("args",
                 "--input " + loggerGenTask.getInputFile() +
-                        " --package " + loggerGenTask.getPackageName() +
+                        " --package-name " + loggerGenTask.getPackageName() +
                         " --codegen-output " + loggerGenTask.getCodegenOutput() +
                         " --class-name " + loggerGenTask.getClassName() +
                         " --html-name " + loggerGenTask.getHtmlName() +
@@ -21,7 +21,7 @@ class LoggerGeneratorInvoker {
                 main="-jar"
                 args = [ loggerGenTask.getExecutableJars().getSingleFile(),
                         "--input" , loggerGenTask.getInputFile() ,
-                                "--package" , loggerGenTask.getPackageName() ,
+                                "--package-name" , loggerGenTask.getPackageName() ,
                                 "--codegen-output" , loggerGenTask.getCodegenOutput() ,
                                 "--class-name" , loggerGenTask.getClassName() ,
                                 "--html-name" , loggerGenTask.getHtmlName() ,
