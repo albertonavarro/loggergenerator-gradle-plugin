@@ -19,7 +19,7 @@ buildscript{
         maven { url "https://dl.bintray.com/albertonavarro/maven" }
     }
     dependencies{
-        classpath 'com.navid.loggergenerator:loggergenerator-gradle-plugin:1.4.6'
+        classpath 'com.navid.loggergenerator:loggergenerator-gradle-plugin:1.4.7'
     }
 }
 
@@ -64,7 +64,7 @@ So far, as long as you keep to the latest plugin version, you'll get the latest 
 
 ```groovy
 LoggerGeneratorConfig {
-    executableVersion = "1.0.2"
+    executableVersion = "1.3.0"
 }
 ```
 
@@ -74,6 +74,7 @@ LoggerGeneratorConfig {
 
 ```yml
 version: 1
+project-name: example
 mappings:
   - name: amount
     type: java.lang.Integer

@@ -1,4 +1,5 @@
 version: 1
+project-name: coins-jdk8-example
 mappings:
   - name: amount
     type: java.lang.Integer
@@ -9,6 +10,9 @@ mappings:
   - name: coins
     type: int
     description: Number of coins in a combination.
+  - name: iid
+    type: java.util.UUID
+    description: Interaction id, basically like a request id.
 sentences:
   - code: ResultCombinations
     message: "Number of combinations of getting change"
@@ -24,3 +28,5 @@ sentences:
       - coins
     extradata: {}
     defaultLevel: info
+context:
+  - iid
