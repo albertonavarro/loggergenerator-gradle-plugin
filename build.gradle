@@ -41,7 +41,7 @@ gradlePlugin {
 // Configuration for: com.gradle.plugin-publish
 pluginBundle {
     website = 'https://github.com/albertonavarro/loggergenerator-gradle-plugin'
-    vcsUrl = 'scm:git@github.com/albertonavarro/loggergenerator-gradle-plugin.git'
+    vcsUrl = 'https://github.com/albertonavarro/loggergenerator-gradle-plugin.git'
     tags = ['loggergenerator', 'looking4q', 'navid']
     description = project.description
 
