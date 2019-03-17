@@ -5,6 +5,7 @@ import org.slf4j.LoggerFactory;
 
 import static com.navid.codegen.LoggerUtils.*;
 import static java.util.Arrays.asList;
+import static java.util.UUID.randomUUID;
 
 /**
  * Code taken from https://github.com/TheAlgorithms/Java/blob/master/Dynamic%20Programming/CoinChange.java
@@ -24,6 +25,8 @@ public class CoinChange {
 
         int amount = 12;
         int[] coins = {2, 4, 5};
+
+        setContextIid(randomUUID());
         
         //non audit lines also accepted
         logger.info("Input (using array) {} {}", kvAmount(12), aCoins(coins));
@@ -34,6 +37,8 @@ public class CoinChange {
 
         //System.out.println("Minimum number of coins required for amount :" + amount + " is: " + minimumCoins(coins, amount));
         auditResultMinimum(logger, amount, minimumCoins(coins, amount));
+
+        removeContextIid();
     }
 
     /**

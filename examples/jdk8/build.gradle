@@ -1,18 +1,7 @@
-buildscript{
-    repositories {
-        maven { url "https://dl.bintray.com/albertonavarro/maven" }
-    }
-    dependencies{
-        classpath 'com.navid.loggergenerator:loggergenerator-gradle-plugin:1.4.7'
-    }
-}
-
 plugins {
     id 'java'
+    id "com.navid.LoggerGeneratorPlugin" version "1.4.8"
 }
-
-apply plugin: com.navid.loggergenerator.plugin.LoggerGeneratorPlugin
-
 
 group 'com.navid.loggergenerator'
 version '1.0-SNAPSHOT'
