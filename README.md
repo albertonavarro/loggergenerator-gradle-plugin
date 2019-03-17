@@ -14,18 +14,12 @@ https://github.com/albertonavarro/loggergenerator
 ### Importing plugin 
 
 ```groovy
-buildscript{
-    repositories {
-        maven { url "https://dl.bintray.com/albertonavarro/maven" }
-    }
-    dependencies{
-        classpath 'com.navid.loggergenerator:loggergenerator-gradle-plugin:1.4.7'
-    }
+plugins {
+    id "com.navid.LoggerGeneratorPlugin" version "1.4.9"
 }
-
-apply plugin: com.navid.loggergenerator.plugin.LoggerGeneratorPlugin
-
 ```
+
+More info and options in the gradle plugin portal:  https://plugins.gradle.org/plugin/com.navid.LoggerGeneratorPlugin
 
 ### Using the default task
 
@@ -64,7 +58,7 @@ So far, as long as you keep to the latest plugin version, you'll get the latest 
 
 ```groovy
 LoggerGeneratorConfig {
-    executableVersion = "1.3.0"
+    executableVersion = "1.4.1"
 }
 ```
 
@@ -85,20 +79,25 @@ mappings:
   - name: coins
     type: int
     description: Number of coins in a combination.
+  - name: retention
+    type: java.lang.String
+    description: Custom retention policy
 sentences:
   - code: ResultCombinations
     message: "Number of combinations of getting change"
     variables:
       - amount
       - combinations
-    extradata: {}
+    extradata: 
+      retention: mid
     defaultLevel: info
   - code: ResultMinimum
     message: "Minimum number of coins required"
     variables:
       - amount
       - coins
-    extradata: {}
+    extradata: 
+      retention: high
     defaultLevel: info 
 ```
 

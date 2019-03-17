@@ -1,6 +1,6 @@
 plugins {
     id 'java'
-    id "com.navid.LoggerGeneratorPlugin" version "1.4.8"
+    id "com.navid.LoggerGeneratorPlugin" version "1.4.9"
 }
 
 group 'com.navid.loggergenerator'
