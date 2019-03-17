@@ -15,7 +15,10 @@ mappings:
     description: Interaction id, basically like a request id.
   - name: importance
     type: java.lang.String
-    descrption: log importance
+    description: log importance
+  - name: infoCode
+    type: int
+    description: internal code for support purposes
 sentences:
   - code: ResultCombinations
     message: "Number of combinations of getting change"
@@ -23,7 +26,7 @@ sentences:
       - amount
       - combinations
     extradata:
-      - importance: info
+      importance: info
     defaultLevel: info
   - code: ResultMinimum
     message: "Minimum number of coins required"
@@ -31,7 +34,8 @@ sentences:
       - amount
       - coins
     extradata:
-      - importance: high
+      importance: high
+      infoCode: 5
     defaultLevel: info
 context:
   - iid
